@@ -24,3 +24,5 @@ Route::get('/', [TodoListController::class, 'getAllToDo']);
 Route::post('/create',[TodoListController::class, 'create']);
 
 Route::delete('/delete',[TodoListController::class, 'delete']);
+
+Route::post('/update',[TodolistController::class, 'update']);
