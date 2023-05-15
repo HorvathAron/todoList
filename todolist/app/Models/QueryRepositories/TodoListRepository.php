@@ -16,7 +16,12 @@ class TodoListRepository
 
     public static function createTask($content)
     {
-        //Todo
+        $id = DB::table("todolist")->insertGetId([
+            "content"=>$content,
+            "created_at"=>Carbon::now(),
+            "updated_at"=>Carbon::now()
+        ]);
+        return "Task has been created!";
     }
 
     public static function deleteTask($id)

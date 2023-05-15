@@ -20,3 +20,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/', [TodoListController::class, 'getAllToDo']);
+
+Route::post('/create',[TodolistController::class, 'create']);
