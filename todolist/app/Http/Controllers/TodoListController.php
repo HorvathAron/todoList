@@ -30,7 +30,7 @@ class TodoListController extends Controller
             return response(["message" => "Could not create task!"], Response::HTTP_NOT_FOUND);
         else
         {
-            $response = ['Created' => TodolistRepository::createTask($request->content)];
+            $response = ['Created' => TodoListRepository::createTask($request->content)];
             return response($response, Response::HTTP_CREATED);
         }
     }
@@ -40,7 +40,13 @@ class TodoListController extends Controller
      */
     public function delete(Request $request)
     {
-        //ToDo
+        if (!$request->has('id') || $request->id == null)
+            return response(["message" => 'Error! No id was given!'], Response::HTTP_NOT_FOUND);
+        else
+        {
+            $response = [TodoListRepository::deleteTask($request->id)];
+            return response($response, Response::HTTP_OK);
+        }
     }
 
     /**
