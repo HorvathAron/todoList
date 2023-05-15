@@ -54,6 +54,12 @@ class TodoListController extends Controller
      */
     public function update(Request $request)
     {
-        //ToDo
+        if(!$request->has('id') || $request->id != null and !$request->has('content') || $request->content==null)
+            return response(["message" => 'Error! No content or id was given!'], Response::HTTP_NOT_FOUND);
+        else
+        {
+            $response = [TodoListRepository::updateTask($request->content,$request->id)];
+            return response($response, Response::HTTP_OK);
+        }
     }
 }

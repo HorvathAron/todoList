@@ -34,7 +34,13 @@ class TodoListRepository
 
     public static function updateTask($content,$id)
     {
-        //Todo
+        DB::table("todolist")
+            ->where('id', '=', $id)
+            ->update([
+                'content'=> $content,
+                'updated_at'=> Carbon::now()
+            ]);
+        return "Task has been updated!";
     }
 
 }
