@@ -2,19 +2,23 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Todolist;
+use App\Models\TodoList;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
-use App\Models\QueryRepositories\TodolistRepository;
+use App\Models\QueryRepositories\TodoListRepository;
 
-class TodolistController extends Controller
+class TodoListController extends Controller
 {
     /**
      * Display a listing of the tasks.
      */
     function getAllToDo(Request $request)
     {
-        //ToDo
+        $response = [
+            'Tasks' => TodoListRepository::GetAllTasks()
+        ];
+
+        return response($response, Response::HTTP_OK);
     }
 
     /**

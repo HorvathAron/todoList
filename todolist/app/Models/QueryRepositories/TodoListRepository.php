@@ -5,13 +5,13 @@ namespace app\Models\QueryRepositories;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
-use App\Models\Todolist;
 
-class TodolistRepository
+class TodoListRepository
 {
     public static function getAllTasks()
     {
-        //Todo
+        $tasks = DB::table('todolist')->get();
+        return $tasks;
     }
 
     public static function createTask($content)
