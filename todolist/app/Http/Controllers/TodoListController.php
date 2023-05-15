@@ -26,7 +26,13 @@ class TodoListController extends Controller
      */
     public function create(Request $request)
     {
-        //ToDo
+        if (!$request->has('content') || $request->content==null)
+            return response(["message" => "Could not create task!"], Response::HTTP_NOT_FOUND);
+        else
+        {
+            $response = ['Created' => TodolistRepository::createTask($request->content)];
+            return response($response, Response::HTTP_CREATED);
+        }
     }
 
     /**
