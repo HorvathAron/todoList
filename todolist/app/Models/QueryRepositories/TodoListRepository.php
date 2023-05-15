@@ -26,7 +26,10 @@ class TodoListRepository
 
     public static function deleteTask($id)
     {
-        //Todo
+        DB::table('todolist')
+            ->where('id', '=', $id)
+            ->delete();
+        return "Task has been deleted!";
     }
 
     public static function updateTask($content,$id)
